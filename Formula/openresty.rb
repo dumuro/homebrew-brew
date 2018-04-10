@@ -42,6 +42,8 @@ class Openresty < Formula
       --with-stream
       --with-stream_ssl_module
       --with-http_v2_module
+      --with-mail
+      --with-mail_ssl_module
       --without-mail_pop3_module
       --without-mail_imap_module
       --without-mail_smtp_module
@@ -61,12 +63,18 @@ class Openresty < Formula
       --with-threads
       --with-luajit-xcflags=-DLUAJIT_NUMMODE=2\ -DLUAJIT_ENABLE_LUA52COMPAT
       --with-dtrace-probes
+      --with-debug
+      --with-file-aio
+      --with-http_degradation_module
+      --with-http_image_filter_module
+      --with-http_perl_module
+      --with-http_ssl_module
+      --with-http_xslt_module
     ]
 
     args << "--with-http_postgres_module" if build.with? "postgresql"
     args << "--with-http_iconv_module" if build.with? "iconv"
     args << "--with-http_slice_module" if build.with? "slice"
-
     args << "--with-debug" if build.with? "debug"
 
     system "./configure", *args
